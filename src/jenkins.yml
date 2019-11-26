@@ -1,0 +1,76 @@
+unclassified:
+ metricsAccessKey:
+    accessKeys:
+    - canHealthCheck: true
+      canMetrics: true
+      canPing: true
+      canThreadDump: false
+      description: "Metrix_HealthCheck"
+      key: "uqqsV0tmL55f_qD4AuwJgi7YayEkwjPL-Inni6H3jD9ws9MtFRiLI3s5b0L3PfCf"
+      origins: "*"
+jobs:
+  - script: >
+        pipelineJob('Demo') {
+          definition {
+            cps {
+              script("""\
+                pipeline {
+                  agent any
+                  stages {
+                    stage ('checkout') {
+                      steps {
+                        url: 'https://github.com/Patelvijaykumar/Shell-Script-Tutorial.git'
+                        }
+                    }
+                    stage ('Automation') {
+                      steps {
+                        sh 'example1.sh'
+                        }
+                    }
+                  }
+                }""".stripIndent())
+            }
+          }
+        }
+credentials:
+  system:
+    domainCredentials:
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  disableRememberMe: false
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  nodes:
+  - permanent:
+      labelString: "vijaysnode"
+      launcher:
+        ssh:
+          credentialsId: "node"
+          host: "10.1.1.1"
+          port: 22
+          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+      name: "vijaysnode"
+      numExecutors: 1
+      remoteFS: "/home/vijay"
+      retentionStrategy: "always"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: false
+  scmCheckoutRetryCount: 0
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"

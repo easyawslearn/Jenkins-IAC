@@ -1,0 +1,12 @@
+metrics
+configuration-as-code
+workflow-aggregator
+workflow-job
+job-dsl
+git
+pipeline-model-definition
+pipeline-stage-step
+credentials
+ssh-slaves
+nodelabelparameter
+rebuild

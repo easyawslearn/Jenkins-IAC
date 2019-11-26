@@ -1,0 +1,11 @@
+version: "2.0"
+services:
+  jenkins:
+    build:
+      context: src/
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    environment:
+      - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+      - DOCKER_HOST="127.0.0.1"
